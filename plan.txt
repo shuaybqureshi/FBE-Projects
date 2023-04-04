@@ -1,0 +1,7 @@
+Intial 
+    - background 
+    - center
+    - header
+    - icon 
+    - card 
+    - 

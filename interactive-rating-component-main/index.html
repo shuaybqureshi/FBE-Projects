@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;700&display=swap" rel="stylesheet">
+  <title>Frontend Mentor | Interactive rating component</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+    body{ 
+      background-color: hsl(216, 12%, 8%);
+      display: grid;
+      place-content: center;
+      height: 100vh;
+    }
+    button{ 
+      font-family: Overpass;
+      width: 85%;
+      padding: 5px;
+      background-color: hsl(25, 97%, 53%);
+      color:white;
+      border-radius: 25px;
+      padding: 10px;
+      font-size: 15px;
+    }
+    .card{ 
+      background-color: hsl(213, 19%, 18%);
+      color:white;
+      font-family: Overpass;
+      width: 400px;
+      padding: 20px;
+      border-radius: 20px;
+      /* background-color:hsl(216, 12%, 54%); */
+      /* background-color:hsl(217, 12%, 63%); */
+    }
+    .heading{
+      font-size: 25px;
+    }
+    .content{
+      font-size: 15px;
+      color:hsl(216, 12%, 54%);
+    }
+    .card div{
+      margin: 10px;
+      
+    }
+    .rating-container{ 
+      display: flex;
+      justify-content: space-evenly;
+    }
+    .circle{ 
+      border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    padding: 4px;
+    background: hsl(213, 17%, 24%);
+    text-align: center;
+    color:hsl(216, 12%, 54%);
+    font: 20px Overpass;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    }
+    .card.circle{
+      margin:2px;
+    }
+
+    .footer{ 
+      justify-content: center;
+      display: flex;
+    }
+    .rating-container .circle:hover{
+      background-color: hsl(25, 97%, 53%);
+      color: white;
+      cursor: pointer;
+    }
+    .active{ 
+      background-color: hsl(25, 97%, 53%);
+      color: white;
+    }
+    button:hover{ 
+      background-color: white;
+      color: hsl(25, 97%, 53%);
+      cursor: pointer;
+    }
+    .center-image{
+    display: flex;
+    justify-content: center;
+    }
+    .state-2-container{
+      text-align: center;
+    }
+    .final-rating{
+      color: hsl(25, 97%, 53%);
+      background-color: hsl(213, 17%, 24%);
+    border-radius: 15px;
+    padding: 7px 20px;
+    font-size: 14px;
+    }
+    #final-rating-container{
+      margin: 30px;
+    }
+  </style>
+<!-- - White: hsl(0, 0%, 100%)
+- Light Grey: hsl(217, 12%, 63%)
+- Medium Grey: hsl(216, 12%, 54%)
+- Dark Blue: hsl(213, 19%, 18%)
+- Very Dark Blue: hsl(216, 12%, 8%) -->
+
+</head>
+<body>
+
+  <!-- Rating state start -->
+<div class="card">
+
+ <div  id="state-1" class="state-1">
+  <div class="circle">
+    <img  src="./images/icon-star.svg" alt="">
+  </div>
+      <div class="heading">
+        How did we do?
+      </div>
+    <div class = "content">  Please let us know how we did with your support request. All feedback is appreciated 
+      to help us improve our offering!
+    </div>
+
+    <div class="rating-container">
+      <input  hidden type="radio" id="rating1" name="rating" value="1">
+      <label  class="circle" for="rating1">1</label>
+
+      <input  hidden  type="radio" id="rating2" name="rating" value="2">
+      <label  class="circle" for="rating2">2</label>
+      
+      <input hidden  type="radio" id="rating3" name="rating" value="3">
+      <label  class="circle" for="rating3">3</label>
+
+      <input  hidden  type="radio" id="rating4" name="rating" value="4">
+      <label  class="circle" for="rating4">4</label>
+      
+      <input hidden  type="radio" id="rating5" name="rating" value="5">
+      <label  class="circle" for="rating5">5</label>
+      <!-- 1 2 3 4 5 -->
+    </div>
+    <div class="footer">
+    <button id="submit-form"> SUBMIT</button>
+    </div>
+ </div>
+ <!-- Rating state end -->
+
+  <!-- Thank you state start -->
+
+<div id="state-2" class="state-2"  hidden>
+  <div class="center-image">
+    <img   src="./images/illustration-thank-you.svg" />
+  </div>
+<div class="state-2-container">
+  <div id="final-rating-container">
+    <span class="final-rating" id="final-rating">
+     You didn't pick a rating!
+    </span>
+  </div>
+  <div class="heading">
+    Thank you!
+  </div>
+<div class="content">
+  We appreciate you taking the time to give a rating. If you ever need more support, 
+  don’t hesitate to get in touch!
+</div>
+</div>
+
+</div>
+
+  <!-- Thank you state end -->
+
+</div>
+  
+  
+
+</body>
+<div class="attribution">
+  Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+  Coded by <a href="#">Your Name Here</a>.
+</div>
+</html>
+
+<script>
+$(document).ready(function(){
+  oldLabel = null 
+
+  $('input[type=radio][name=rating]').change(function() {
+    if (oldLabel!=null){
+      oldLabel.removeClass("active")
+    }
+    var label = $('label[for="' + $(this).attr('id') + '"]');
+    label.addClass("active")
+    oldLabel=label
+     $("#final-rating").html(" You selected out "+this.value+" of 5");
+
+  });
+
+  $('#submit-form').click(function() {
+    $("#state-1").hide()
+    $("#state-2").show()
+  });
+  
+
+});
+</script>
